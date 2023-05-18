@@ -1,9 +1,22 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import Loading from "../components/Loading";
+
+const Login = lazy(() => import("./login"));
+const Attendance = lazy(() => import("./attendance"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Attendance />,
+  },
+  {
+    path: "/login",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <Login />
+      </Suspense>
+    ),
   },
 ]);
 
