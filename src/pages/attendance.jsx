@@ -15,8 +15,8 @@ function Attendance() {
 
   return (
     <div className="w-screen h-screen flex items-center justify-center">
-      <div className="border rounded-md shadow-md w-3/4 h-2/4 flex flex-col">
-        <div className="w-full grid place-items-center border-b p-4">
+      <div className="border rounded-md shadow-md w-full max-w-lg flex flex-col m-2">
+        <div className="grid place-items-center border-b p-4">
           <span className="font-bold text-4xl text-gray-700">
             {timeData.toLocaleTimeString()}
           </span>
