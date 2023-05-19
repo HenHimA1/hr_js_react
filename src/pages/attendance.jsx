@@ -1,17 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext, lazy } from "react";
+import { ContextProvider } from "../stores";
+import { Navigate } from "react-router-dom";
 
 function Attendance() {
+  const { user } = useContext(ContextProvider)
   const [timeData, setTimeData] = useState(new Date());
 
-  const handleCheckIn = () => {};
+  const handleCheckIn = () => { };
 
-  const handleCheckOut = () => {};
+  const handleCheckOut = () => { };
 
   useEffect(() => {
     setInterval(() => {
       setTimeData(new Date());
     }, 1000);
   }, []);
+
+  if (!user) {
+    return <Navigate to={"/login"} />
+  }
 
   return (
     <div className="w-screen h-screen flex items-center justify-center">

@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { ContextProvider } from "../stores";
+import { Navigate } from "react-router-dom";
 
 function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
-  const {loginUser, user } = useContext(ContextProvider);
+  const { loginUser, user } = useContext(ContextProvider);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,6 +30,10 @@ function Login() {
   useEffect(() => {
     console.log(user);
   }, [user]);
+
+  if (user) {
+    return <Navigate to={"/"} />
+  }
 
   return (
     <div className="w-screen h-screen flex justify-center items-center">
