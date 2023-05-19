@@ -32,8 +32,8 @@ function Login() {
   }
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center">
-      <form className="border p-2 rounded-md" onSubmit={handleSubmit}>
+    <div className="w-screen h-screen flex justify-center items-center bg-gray-100">
+      <form className="bg-white border p-2 rounded-md shadow-md w-full max-w-xs" onSubmit={handleSubmit}>
         <div className="p-2 grid gap-2">
           <label className="font-semibold text-gray-700" htmlFor="email">
             Email

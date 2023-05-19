@@ -21,11 +21,11 @@ function Attendance() {
   }
 
   return (
-    <div className="w-screen h-screen bg-gray-200">
-      <div className="w-full">
-        <Link to={"/logout"}>Logout</Link>
+    <div className="bg-gray-100 w-screen h-screen flex flex-col gap-2">
+      <div className="w-full bg-white flex justify-end">
+        <Link className="font-semibold p-2 text-gray-700" to={"/logout"}>Logout</Link>
       </div>
-      <div className="w-full">
+      <div className="w-full flex-grow flex items-center justify-center">
         <div className="bg-white border rounded-md shadow-md w-full max-w-lg flex flex-col">
           <div className="grid place-items-center border-b p-4">
             <span className="font-bold text-4xl text-gray-700">
