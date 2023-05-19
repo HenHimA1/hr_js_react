@@ -4,19 +4,31 @@ import Loading from "../components/Loading";
 
 const Login = lazy(() => import("./login"));
 const Attendance = lazy(() => import("./attendance"));
+const Logout = lazy(() => import("./logout"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Attendance />,
+    element:
+      <Suspense fallback={<Loading />}>
+        <Attendance />
+      </Suspense>,
   },
   {
     path: "/login",
-    element: (
+    element:
       <Suspense fallback={<Loading />}>
         <Login />
       </Suspense>
-    ),
+    ,
+  },
+  {
+    path: "/logout",
+    element:
+      <Suspense fallback={<Loading />}>
+        <Logout />
+      </Suspense>
+    ,
   },
 ]);
 

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { ContextProvider } from "../stores";
 import { Navigate } from "react-router-dom";
 
@@ -26,10 +26,6 @@ function Login() {
       [e.target.name]: e.target.value,
     }));
   };
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   if (user) {
     return <Navigate to={"/"} />
