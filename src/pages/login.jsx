@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 
 function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [errorMessage, setErrorMessage] = useState("")
   const { loginUser, user } = useContext(ContextProvider);
 
   const handleSubmit = (e) => {
@@ -17,7 +18,14 @@ function Login() {
       body: JSON.stringify(formData),
     })
       .then((res) => res.json())
-      .then((res) => loginUser(res.data.token));
+      .then((res) => {
+        if (res.data?.token) {
+          loginUser(res.data.token)
+        }
+        else {
+          throw new Error(res.message)
+        }
+      }).catch(err => setErrorMessage(err.message));
   };
 
   const handleChange = (e) => {
@@ -32,7 +40,7 @@ function Login() {
   }
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center bg-gray-100">
+    <div className="w-screen h-screen flex flex-col justify-center gap-2 items-center bg-gray-100">
       <form className="bg-white border p-2 rounded-md shadow-md w-full max-w-xs" onSubmit={handleSubmit}>
         <div className="p-2 grid gap-2">
           <label className="font-semibold text-gray-700" htmlFor="email">
@@ -65,6 +73,11 @@ function Login() {
           </button>
         </div>
       </form>
+      {errorMessage &&
+        <div className="bg-pink-800 border p-2 rounded-md shadow-md w-full max-w-xs">
+          <label className="text-white">{errorMessage}</label>
+        </div>
+      }
     </div>
   );
 }
