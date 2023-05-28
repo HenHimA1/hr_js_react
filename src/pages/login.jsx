@@ -64,7 +64,8 @@ function Login() {
             onChange={handleChange}
           />
         </div>
-        <div className="p-2 flex justify-end">
+        <div className="p-2 flex justify-between items-center">
+          <a className="text-blue-800 hover:text-blue-700" href="/docs">Dokumentasi API</a>
           <button
             className="bg-blue-800 text-white p-2 rounded-md font-semibold"
             type="submit"

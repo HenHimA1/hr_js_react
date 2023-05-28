@@ -1,5 +1,4 @@
 import { createContext, useReducer } from "react";
-import Pages from "../pages";
 
 const initialState = {
   user: localStorage.getItem("userToken"),
@@ -23,7 +22,8 @@ const reducer = (state, action) => {
 
 export const ContextProvider = createContext();
 
-function Stores() {
+// eslint-disable-next-line react/prop-types
+function Stores({children}) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const loginUser = (token) => {
@@ -42,7 +42,7 @@ function Stores() {
 
   return (
     <ContextProvider.Provider value={value}>
-      <Pages />
+      {children}
     </ContextProvider.Provider>
   );
 }
