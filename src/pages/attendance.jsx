@@ -22,13 +22,13 @@ function Attendance() {
 
   return (
     <div className="w-screen h-screen flex flex-col justify-center gap-2 items-center bg-gray-100">
-      <div className="bg-white flex flex-col gap-2 border p-4 md:p-2 rounded-md shadow-md w-full h-full md:h-fit md:max-w-md">
-        <div className="flex justify-end p-2">
-          <Link className="font-semibold p-2 text-gray-700" to={"/logout"}>
+      <div className="bg-white flex flex-col gap-2 border rounded-md shadow-md w-full h-full md:h-fit md:max-w-md">
+        <div className="flex justify-end items-center p-2">
+          <Link className="font-semibold text-gray-700" to={"/logout"}>
             Logout
           </Link>
         </div>
-        <div className="grid place-items-center border-b p-4">
+        <div className="grid place-items-center border-b p-2">
           <span className="font-bold text-4xl text-gray-700">
             {timeData.toLocaleTimeString()}
           </span>
@@ -53,7 +53,7 @@ function Attendance() {
             placeholder="notes"
           />
         </div>
-        <div className="grid grid-cols-2 gap-2 p-4">
+        <div className="grid grid-cols-2 gap-2 p-2">
           <button
             className="p-2 bg-blue-900 text-white rounded-md"
             onClick={handleCheckIn}
