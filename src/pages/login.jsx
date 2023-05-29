@@ -48,7 +48,9 @@ function Login() {
       >
         <div className="flex flex-col justify-center items-center py-2">
           <h1 className="font-bold text-4xl text-orange-300">MY PRESENSI</h1>
-          <span className="text-xs">Manage your work, manage your life</span>
+          <span className="text-xs text-gray-600">
+            Manage your work, manage your life
+          </span>
         </div>
         <div className="flex justify-center p-2">
           <img src={Icon} alt="Icon" />
@@ -61,7 +63,7 @@ function Login() {
             Email :
           </label>
           <input
-            className="border px-4 py-2 rounded-2xl bg-gray-300 outline-none"
+            className="border px-4 py-2 rounded-2xl bg-gray-300 outline-none text-gray-600"
             name="email"
             type="email"
             placeholder="sample@mail.com"
@@ -76,17 +78,26 @@ function Login() {
             >
               Password :
             </label>
-            <Link className="font-bold text-blue-700 text-xs" to="#">Forgot password?</Link>
+            <Link className="font-bold text-blue-700 text-xs" to="#">
+              Forgot password?
+            </Link>
           </div>
           <input
-            className="border px-4 py-2 rounded-2xl bg-gray-300 outline-none"
+            className="border px-4 py-2 rounded-2xl bg-gray-300 outline-none text-gray-600"
             name="password"
             type="password"
             placeholder="***********"
             onChange={handleChange}
           />
         </div>
-        <div className="p-2 mt-4 flex justify-between items-center">
+        {errorMessage && (
+          <div className="flex justify-center">
+            <label className="text-pink-700 font-semibold text-sm">
+              {errorMessage}
+            </label>
+          </div>
+        )}
+        <div className="p-2 flex justify-between items-center">
           <button
             className="bg-blue-800 text-white p-2 rounded-2xl font-semibold border w-full"
             type="submit"
@@ -94,17 +105,17 @@ function Login() {
             Login
           </button>
         </div>
-        <div className="px-4 py-2">
+        <div className="flex justify-center pb-4">
+          <span className="text-xs font-semibold">
+            Dont have any account yet? <Link className="text-blue-800" to="#">Register</Link> here
+          </span>
+        </div>
+        {/* <div className="px-4 py-2">
           <a className="text-blue-800 hover:text-blue-700" href="/docs">
             Dokumentasi API
           </a>
-        </div>
+        </div> */}
       </form>
-      {errorMessage && (
-        <div className="bg-pink-800 border p-2 rounded-md shadow-md w-full max-w-xs">
-          <label className="text-white">{errorMessage}</label>
-        </div>
-      )}
     </div>
   );
 }
