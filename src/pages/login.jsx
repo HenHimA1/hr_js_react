@@ -46,13 +46,13 @@ function Login() {
         className="bg-white flex flex-col gap-2 border p-4 md:p-2 rounded-md shadow-md w-full h-full md:h-fit md:max-w-md"
         onSubmit={handleSubmit}
       >
-        <div className="flex flex-col justify-center items-center py-2">
+        <div className="flex flex-col justify-center items-center pt-10 pb-4">
           <h1 className="font-bold text-4xl text-orange-300">MY PRESENSI</h1>
           <span className="text-xs text-gray-600">
             Manage your work, manage your life
           </span>
         </div>
-        <div className="flex justify-center p-2">
+        <div className="flex justify-center p-4">
           <img src={Icon} alt="Icon" />
         </div>
         <div className="p-2 grid gap-2">
