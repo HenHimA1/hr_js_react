@@ -1,14 +1,37 @@
 import { useEffect, useState, useContext } from "react";
 import { ContextProvider } from "../stores";
 import { Link, Navigate } from "react-router-dom";
+import OpenStreetMap from "../components/OpenStreetMap";
 
 function Attendance() {
   const { user } = useContext(ContextProvider);
   const [timeData, setTimeData] = useState(new Date());
+  const [position, setPosition] = useState({
+    latitude: false,
+    longitude: false,
+  });
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleCheckIn = () => {};
-
+  const handleCheckIn = () => {
+    console.log(position);
+  };
   const handleCheckOut = () => {};
+  const handleLocation = () => {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setErrorMessage("");
+        setPosition({
+          latitude: pos.coords.latitude,
+          longitude: pos.coords.longitude,
+        });
+      },
+      (err) => {
+        setErrorMessage(err.message);
+        setPosition({ latitude: false, longitude: false });
+      },
+      { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 }
+    );
+  };
 
   useEffect(() => {
     setInterval(() => {
@@ -24,7 +47,7 @@ function Attendance() {
     <div className="w-screen h-screen flex flex-col justify-center gap-2 items-center bg-gray-100">
       <div className="bg-white flex flex-col gap-2 border rounded-md shadow-md w-full h-full md:h-fit md:max-w-md">
         <div className="flex justify-end items-center p-2">
-          <Link className="font-semibold text-gray-700" to={"/logout"}>
+          <Link className="font-semibold text-gray-700 px-2" to={"/logout"}>
             Logout
           </Link>
         </div>
@@ -41,19 +64,33 @@ function Attendance() {
           <span className="font-semibold text-xl text-gray-600">
             08:00 - 17:00
           </span>
-          <iframe
-            className="w-full h-96 p-2"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=106.82887941598894%2C-6.17790761456688%2C106.83241993188861%2C-6.17545964057078&amp;layer=mapnik&amp;marker=-6.176683628983706%2C106.83064967393875"
-          ></iframe>
+          {position.latitude && (
+            <OpenStreetMap
+              className="w-full h-96 px-2 py-2 transition transform ease-out origin-top-right duration-500"
+              latitude={position.latitude}
+              longitude={position.longitude}
+            />
+          )}
+          {errorMessage && (
+            <span className="font-semibold text-sm text-pink-600">
+              {errorMessage}
+            </span>
+          )}
+          <button
+            className="bg-gray-500 text-white my-2 p-1 rounded-sm text-sm font-semibold"
+            onClick={handleLocation}
+          >
+            Get Location
+          </button>
         </div>
-        <div className="p-4 flex-grow">
+        <div className="px-4 flex-grow">
           <textarea
             className="outline-none border p-2 w-full h-full resize-none"
             type="text"
             placeholder="notes"
           />
         </div>
-        <div className="grid grid-cols-2 gap-2 p-2">
+        <div className="grid grid-cols-2 gap-2 px-4 p-2">
           <button
             className="p-2 bg-blue-900 text-white rounded-md"
             onClick={handleCheckIn}
