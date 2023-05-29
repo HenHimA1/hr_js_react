@@ -94,7 +94,7 @@ function Login() {
             Login
           </button>
         </div>
-        <div>
+        <div className="px-4 py-2">
           <a className="text-blue-800 hover:text-blue-700" href="/docs">
             Dokumentasi API
           </a>
