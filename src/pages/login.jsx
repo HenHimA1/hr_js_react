@@ -107,14 +107,18 @@ function Login() {
         </div>
         <div className="flex justify-center pb-4">
           <span className="text-xs font-semibold">
-            Dont have any account yet? <Link className="text-blue-800" to="#">Register</Link> here
+            Dont have any account yet?{" "}
+            <Link className="text-blue-800" to="#">
+              Register
+            </Link>{" "}
+            here
           </span>
         </div>
-        {/* <div className="px-4 py-2">
-          <a className="text-blue-800 hover:text-blue-700" href="/docs">
+        <div className="px-4 py-2 flex justify-end">
+          <a className="text-blue-800 hover:text-blue-700 text-sm font-semibold" href="/docs">
             Dokumentasi API
           </a>
-        </div> */}
+        </div>
       </form>
     </div>
   );
